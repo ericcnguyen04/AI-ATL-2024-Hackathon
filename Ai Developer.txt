@@ -3,3 +3,38 @@ Paige Bailey // developer experience engineering lead
 
 Generative ai is transforming how google builds products
 
+# Gemini (google) (multi model) - can understand vid, image, txt
+
+2M tokens for gemini products
+128k tokens gpt-4 turbo
+500k tokens claude 3
+
+gemini 1.5 pro
+
+
+
+DEMOS as to why gemini is useful
+
+AI Studio - how you can explore versions of AI models
+
+demo gemini 1.5 flash {
+    enters prompt "tell me the days of the week for your birthday from 2025 to 2025"
+    doesnt answer
+
+    if you turn on code execution {
+        it will give a reply
+    }
+
+    function calling or json mode will give good responses
+    
+
+    get API key {
+
+    }
+
+    tooling {
+        use google search as source
+    }
+
+}
+
