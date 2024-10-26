@@ -48,7 +48,7 @@ def users():
 @app.route('/generate-story', methods=['POST'])
 def generate_story():
     data = request.json
-    text = data.get('text', '')
+    text = data.get('text', 'Assist the doctor by giving a summary of the patient, medical history, possible diagnoses, and treatment')
 
     # Generate content using the text
     model = genai.GenerativeModel("gemini-1.5-flash")
