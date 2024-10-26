@@ -6,9 +6,18 @@ function App() {
   const [response, setResponse] = useState(null); // State to hold the backend response
   const [userDummy, setUserDummy] = useState([]); // State to hold the backend response
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('yippie')
+
+    try {
+      const res = await axios.post("http://127.0.0.1:5000/analyze", {
+        patientId: text,
+        text: text
+      });
+      setResponse(res.data);
+    } catch (error) {
+      console.error('Error analyzing the text:', error);
+    }
   }
 
   const fetchAPI = async () => {
@@ -41,12 +50,27 @@ function App() {
         <button type="submit">Submit</button>
       </form>
 
-      {userDummy.map((user, index) => (
-        <div key={index}>
-          <span>{user}</span>
-        </div>
-      ))}
+      <div>
+        <h3>User list:</h3>
+        {userDummy.map((user, index) => (
+          <div key={index}>
+            <span>{user}</span>
+          </div>
+        ))}
+      </div>
       
+
+      <h2>test</h2>
+      <p>hi {response}</p>
+
+      {response && (
+        <div>
+          <h3>AI Response:</h3>
+          <pre>{JSON.stringify(response.summary, null, 2)}</pre>
+        </div>
+      )}
+
+
     </div>
   );
 }
