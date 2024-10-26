@@ -12,17 +12,12 @@ function App() {
     e.preventDefault()
 
     try {
-      const res = await axios.post("http://127.0.0.1:5000/analyze", {
-        text: text
-      });
-
-      console.log('Response from AI:', res.data); // Debugging line
-      setResponse(res.data);
-      console.log(res)
+      const response = await axios.post('http://127.0.0.1:5000/generate-story', { text });
+      setResponse(response.data.text);
     } catch (error) {
-      console.error('Error analyzing the text:', error);
+      console.error('Error generating story:', error);
     }
-  }
+  };
 
   const handleAddUser = async (e) => {
     e.preventDefault();
@@ -84,19 +79,10 @@ function App() {
       </div>
       
 
-      <h2>test</h2>
-      <p>hi {response}</p>
-
-      {/* {response && (
-        <div>
-          <h3>AI Response:</h3>
-          {response.summary && typeof response.summary === 'object' ? (
-            <pre>{JSON.stringify(response.summary, null, 2)}</pre>
-          ) : (
-            <p>{response.summary || 'No summary available'}</p>
-          )}
-        </div>
-      )} */}
+      <div>
+        <h2>Generated Story:</h2>
+        <p>{response}</p>
+      </div>
 
 
 
