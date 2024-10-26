@@ -7,6 +7,21 @@
   pointer-events: none;
 }
 
+.input-box {
+  width: 80%;              /* Full width of its container */
+  height: 150px;            /* Default height */
+  padding: 10px;            /* Some padding for nicer looks */
+  font-size: 16px;          /* Increase font size */
+  line-height: 1.5;         /* Adjust line height for readability */
+  resize: vertical;         /* Allow resizing vertically only */
+  box-sizing: border-box;   /* Include padding in the width */
+  overflow-y: auto;         /* Enable vertical scrolling if needed */
+  border: 1px solid #ccc;   /* Light border */
+  border-radius: 5px;       /* Rounded corners */
+  white-space: pre-wrap;    /* Keep white space, wrap lines */
+  word-wrap: break-word;    /* Wrap long words */
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

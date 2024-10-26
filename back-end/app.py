@@ -1,6 +1,10 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
+import google.generativeai as genai
+from dotenv import load_dotenv
+import os
+
 app = Flask(__name__)
 cors = CORS(app, origins='*')
 
@@ -25,14 +29,28 @@ def users():
         }
     )
 
+@app.route("/users", methods=['POST'])
+def add_user():
+    data = request.json
+    new_user = data.get('username','')
+
+    if not new_user:
+        return jsonify({"error": "No username provided"}), 400
+
+    # Add the new user to the in-memory list
+    users.append(new_user)
+
+    return jsonify({"message": "User added successfully", "users": users}), 201
+
+
 @app.route("/analyze", methods=['POST'])
 def analyze():
     data = request.json
     text = data.get('text', '')
     patient_id = data.get('patientId', '')
 
-    if not text:
-        return jsonify({"error": "No text provided"}), 400
+    # if not text:
+    #     return jsonify({"error": "No text provided"}), 400
 
     try:
         # Prepare the headers for Gemini API
@@ -49,11 +67,11 @@ def analyze():
 
         # Check if the request was successful
         if response.status_code == 200:
-            data = response.json()
+            gemini_data = response.json() # actual AI response
             # Process the response data as needed
             response_data = {
                 "patient_id": patient_id,
-                "summary": data  # Assuming Gemini API returns a summary of the analysis
+                "summary": gemini_data  # Assuming Gemini API returns a summary of the analysis
             }
         else:
             response_data = {
