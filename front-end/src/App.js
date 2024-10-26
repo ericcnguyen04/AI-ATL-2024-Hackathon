@@ -1,6 +1,7 @@
 import './App.css'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
 
 function App() {
   const [text, setText] = useState(''); // State to hold the input text
@@ -18,24 +19,6 @@ function App() {
       console.error('Error generating story:', error);
     }
   };
-
-  const handleAddUser = async (e) => {
-    e.preventDefault();
-
-    try {
-      const res = await axios.post("http://127.0.0.1:5000/users", {
-        username: text
-      });
-
-      // Update the user list after adding the new user
-      setUserDummy(res.data.users);
-      setText(''); // Clear the input field
-    } catch (error) {
-      console.error('Error adding new user:', error);
-      console.log('Error details:', error.response?.data);
-
-    }
-  }
 
   const fetchAPI = async () => {
     try {
@@ -66,7 +49,6 @@ function App() {
           placeholder="Enter Patient ID"
         />
         <button type="submit">Submit</button>
-        <button onClick={handleAddUser}>Add user</button>
       </form>
 
       <div>
@@ -78,13 +60,10 @@ function App() {
         ))}
       </div>
       
-
       <div>
         <h2>Generated Story:</h2>
-        <p>{response}</p>
+        <ReactMarkdown>{response}</ReactMarkdown>
       </div>
-
-
 
     </div>
   );

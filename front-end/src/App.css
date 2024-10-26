@@ -22,6 +22,24 @@
   word-wrap: break-word;    /* Wrap long words */
 }
 
+/* Add this in your App.css file or directly in your component's style */
+.generated-story {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  white-space: pre-wrap; /* Preserve whitespace */
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.generated-story h2, .generated-story h3 {
+  margin-top: 1em;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
