@@ -51,19 +51,20 @@ function App() {
         <button type="submit">Submit</button>
       </form>
 
-      <div>
+      {/* <div>
         <h3>User list:</h3>
         {userDummy.map((user, index) => (
           <div key={index}>
             <span>{user}</span>
           </div>
         ))}
-      </div>
+      </div> */}
       
       <div>
         <h2>Generated Story:</h2>
         <ReactMarkdown>{response}</ReactMarkdown>
       </div>
+
 
     </div>
   );

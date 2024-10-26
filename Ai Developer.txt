@@ -40,3 +40,14 @@ demo gemini 1.5 flash {
 
 MY API KEY : AIzaSyA_NLgNcwTxCaudQLqnImLQqwb7FjVIBRQ
 AIzaSyA_NLgNcwTxCaudQLqnImLQqwb7FjVIBRQ
+
+Patient ID: 12345
+Name: John Doe
+Age: 18
+Gender: Male
+Height: 5'10"
+Weight: 185 lbs
+Symptoms: Peeing hurts
+Medical History: None
+Current Medications: None
+Allergies: None

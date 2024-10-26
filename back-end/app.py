@@ -35,11 +35,11 @@ def users():
 @app.route('/generate-story', methods=['POST'])
 def generate_story():
     data = request.json
-    text = data.get('text', 'You are a helpful medical assistant for doctors. You have a vast corpus of knowledge at your disposal for helping summarize and assist medical professionals safely and reliably. Please assist the doctor by giving a summary of the patient, medical history, symptoms, possible diagnoses, and treatment. Use the data above to help with your diagnosis and summary.')
+    text = data.get('text')
 
     # Generate content using the text
     model = genai.GenerativeModel("gemini-1.5-flash")
-    response = model.generate_content(text)
+    response = model.generate_content('You are a helpful medical assistant for doctors. You have a vast corpus of knowledge at your disposal for helping summarize and assist medical professionals safely and reliably. Please assist the doctor by giving a summary of the patient, medical history, symptoms, possible diagnoses, and treatment. Use the data above to help with your diagnosis and summary.' + text)
     
     return jsonify({'text': response.text})
 
