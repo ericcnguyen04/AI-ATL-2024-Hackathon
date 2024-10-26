@@ -15,6 +15,7 @@ function App() {
     try {
       const response = await axios.post('http://127.0.0.1:5000/generate-story', { text });
       setResponse(response.data.text);
+      console.log("Submitted")
     } catch (error) {
       console.error('Error generating story:', error);
     }
