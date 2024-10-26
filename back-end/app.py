@@ -1,23 +1,32 @@
-from flask import Flask, request, jsonify
+# 1. imports and set up
+from flask import Flask, jsonify, requests
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Allow CORS for communication with React frontend
+cors = CORS(app, origins='*')
 
+# 2. logics and initiation
 @app.route('/')
 def home():
     return "Hello, Flask is up and running!"
 
-@app.route('/submit-text', methods=['POST'])
-def submit_text():
-    data = request.get_json()  # Get JSON data from the POST request
-    input_text = data.get('text')  # Extract the text field from the JSON data
+@app.route("/users", methods=['GET'])
+def users():
+    return jsonify(
+        {
+            "users": [
+                'arol',
+                'jess',
+                'jackson'
+            ]
+        }
+    )
 
-    # Dummy processing - You can add AI processing here
-    response_message = f"Received the text: {input_text}"
+@app.route("/analyze", methods=['POST'])
+def analyze():
+    
 
-    # Return a response to the frontend
-    return jsonify({'message': response_message})
 
+# 3. some export bs
 if __name__ == '__main__':
     app.run(debug=True)

@@ -38,3 +38,4 @@ demo gemini 1.5 flash {
 
 }
 
+MY API KEY : AIzaSyA_NLgNcwTxCaudQLqnImLQqwb7FjVIBRQ
