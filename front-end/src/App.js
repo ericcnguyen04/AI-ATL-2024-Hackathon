@@ -3,17 +3,26 @@ import axios from 'axios';
 
 function App() {
   const [text, setText] = useState(''); // State to hold the input text
-  const [response, setResponse] = useState([]); // State to hold the backend response
+  const [response, setResponse] = useState(null); // State to hold the backend response
+  const [userDummy, setUserDummy] = useState([]); // State to hold the backend response
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(text)
+    console.log('yippie')
   }
 
   const fetchAPI = async () => {
-    const response = await axios.get("http://127.0.0.1:5000/users");
+    try {
+      const res = await axios.get("http://127.0.0.1:5000/users");
+      // Update the response state with the data
+      setUserDummy(res.data.users);
+      console.log(res.data.users)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+
+    // const response = await axios.get("http://127.0.0.1:5000/users");
     // console.log(response.data.users)
-    setResponse(response.data.users)
+    }
   }
 
   useEffect(() => {
@@ -32,14 +41,12 @@ function App() {
         <button type="submit">Submit</button>
       </form>
 
-        <div>
-          <h3>users</h3>
-          <p>
-          {response.map((user, index) => (
-            <span>{user + ", "}</span>
-          ))}
-          </p>
+      {userDummy.map((user, index) => (
+        <div key={index}>
+          <span>{user}</span>
         </div>
+      ))}
+      
     </div>
   );
 }
