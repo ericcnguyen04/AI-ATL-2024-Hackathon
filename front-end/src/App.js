@@ -2,7 +2,7 @@ import './App.css'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import logo from './Components/logo.jpeg';
+
 function App() {
   const [text, setText] = useState(''); // State to hold the input text
   const [response, setResponse] = useState(null); // State to hold the backend response
@@ -42,37 +42,38 @@ function App() {
   const logo = require('./Components/logo.jpeg'); // with require
 
   return (
-    <div className='container'>
-      <div className='input-section'>
-        <img src={logo} className='img' />
+    <div className='screen'>
+      <div className='container'>
+        <div className='input-section'>
 
-        <form onSubmit={handleSubmit}>
-          <textarea
-            className='input-box'
-            type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter Patient ID"
-          />
-          <button type="submit">Submit</button>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className='input-box'
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Enter Patient ID"
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        {/* <div>
+          <h3>User list:</h3>
+          {userDummy.map((user, index) => (
+            <div key={index}>
+              <span>{user}</span>
+            </div>
+          ))}
+        </div> */}
+        
+        <div className='generated-story'>
+          {/* <h2>Generated Story:</h2> */}
+          <ReactMarkdown>{response}</ReactMarkdown>
+        </div>
+
+
       </div>
-
-      {/* <div>
-        <h3>User list:</h3>
-        {userDummy.map((user, index) => (
-          <div key={index}>
-            <span>{user}</span>
-          </div>
-        ))}
-      </div> */}
-      
-      <div className='generated-story'>
-        {/* <h2>Generated Story:</h2> */}
-        <ReactMarkdown>{response}</ReactMarkdown>
-      </div>
-
-
     </div>
   );
 }
