@@ -1,7 +1,7 @@
 .screen {
   background-color: rgb(140, 177, 245);
   width: flex;
-  height: 100vh;
+  height: 200vh;
 }
 
 /* Container styles to create a side-by-side layout */
