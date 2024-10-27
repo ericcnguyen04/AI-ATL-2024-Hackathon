@@ -1,7 +1,7 @@
 import './App.css'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown'; 
 
 function App() {
   const [text, setText] = useState(''); // State to hold the input text
@@ -39,7 +39,7 @@ function App() {
     fetchAPI();
   }, [])
 
-  const logo = require('./Components/logo.jpeg'); // with require
+
 
   return (
     <div className='screen'>
